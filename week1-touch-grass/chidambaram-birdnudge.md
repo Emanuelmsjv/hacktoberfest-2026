@@ -185,19 +185,19 @@ So "not in your local pack" is weaker evidence than it appears. It means *not es
 
 ## Build process
 
-This project was built with an AI coding agent, and the session is linked below. The interesting part is not that it worked, but the two places where it did not:
+This project was built end to end with an AI coding agent (opencode, tracked with DevRelay). The interesting part is not that it worked, but the two places where it did not:
 
 - The `rank` bug above survived several rounds because the agent optimised the thing I asked about and the symptom I noticed — ordering — happened to still be correct.
 - A `ffmpeg` download was corrupted twice in transit, producing a 66 MB "executable" that Windows rejected with *"not a valid application for this OS platform."* The PE header was valid and the machine type was correct; the file was truncated. Diagnosing that took longer than installing ffmpeg should have.
 
-**My Agent Session:** [link to DevRelay embed]
+A third failure worth naming: I spent a deadline-night attempt adding a local Gemma 3 270M model to write the field brief in plain English. It ran, and every single output was invented — weather forecasts at 35 °C, links to websites that do not exist, and not one mention of the bird it was supposed to describe. I deleted the feature rather than ship a birder being sent to check a website. The detection and the species filter are the project. The prose was decoration, and bad decoration is worse than none.
 
 ---
 
 ## Prize Categories
 
 - **Overall** — this is what I am actually aiming for
-- **Best Use of Entire** — the project was built in an agent session and the write-up includes it
+- **Best Use of Entire** — the project was built end to end in an agent session, and the section above is the account of where that help stopped being useful
 
 I considered claiming DigitalOcean and Render and deliberately did not. Deploying a deliberately-offline tool to a cloud runtime to win a hosting prize would contradict the entire premise of the project. Same reasoning for Sentry Agent Tracing — this is deterministic DSP with an ONNX model, no LLM calls, no tokens, no spans to trace.
 
