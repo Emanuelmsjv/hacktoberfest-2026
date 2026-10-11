@@ -192,12 +192,18 @@ This project was built end to end with an AI coding agent (opencode, tracked wit
 
 A third failure worth naming: I spent a deadline-night attempt adding a local Gemma 3 270M model to write the field brief in plain English. It ran, and every single output was invented — weather forecasts at 35 °C, links to websites that do not exist, and not one mention of the bird it was supposed to describe. I deleted the feature rather than ship a birder being sent to check a website. The detection and the species filter are the project. The prose was decoration, and bad decoration is worse than none.
 
+Here is the session where the agent found the `rank` bug, in full. It is twelve messages: you can watch it notice that `rank` prints as `"species"` instead of a number, work out that `{ rank: i + 1, ...s }` lets iNaturalist's own `rank` string land on top of the ordinal, and fix it. The interesting detail is that nothing was broken as far as anyone could tell — the pack was still sorted correctly the whole time. The bug only became visible because a species position was checked against a literal `18`.
+
+{% agent_session 751 %}
+
+*[View this session on DEV](https://dev.to/agent_sessions/debugging-a-clobbered-rank-field-in-fetch-packmjs-opencode-ot6g6e)*
+
 ---
 
 ## Prize Categories
 
 - **Overall** — this is what I am actually aiming for
-- **Best Use of Entire** — the project was built end to end in an agent session, and the section above is the account of where that help stopped being useful
+- **Best Use of Entire** — the project was built end to end in an agent session, the session above is embedded, and the write-up is the account of where that help stopped being useful
 
 I considered claiming DigitalOcean and Render and deliberately did not. Deploying a deliberately-offline tool to a cloud runtime to win a hosting prize would contradict the entire premise of the project. Same reasoning for Sentry Agent Tracing — this is deterministic DSP with an ONNX model, no LLM calls, no tokens, no spans to trace.
 
